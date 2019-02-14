@@ -1,6 +1,7 @@
 const bs58 = require('bs58')
 const { blake2b } = require('blakejs')
-const { toLE } = require('./utils')
+const { toLE, leToNumber } = require('./utils')
+const { AccountIndex, AccountId } = require('./types')
 
 let defaultType = 42
 const KNOWN_TYPES = [0, 1, 42, 43, 68, 69]
@@ -40,7 +41,7 @@ function ss58Encode(a, type = defaultType, checksumLength = null, length = null,
 	}
 	let hash = blake2b((type & 1) ? accountId : new Uint8Array([type, ...payload]))
 	let complete = new Uint8Array([type, ...payload, ...hash.slice(0, checksumLength)])
-	return bs58.encode(complete)
+	return bs58.encode(Buffer.from(complete))
 }
 
 /// `lookupIndex` must be synchronous. If you can do that, then throw, catch outside the
@@ -77,6 +78,7 @@ function ss58Decode(ss58, lookupIndex) {
 	let payload = a.slice(1, 1 + length)
 	let checksum = a.slice(1 + a.length)
 
+	let accountId
 	if (length === 32) {
 		accountId = payload
 	}

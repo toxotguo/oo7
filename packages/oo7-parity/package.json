@@ -1,6 +1,6 @@
 {
   "name": "oo7-parity",
-  "version": "0.7.0",
+  "version": "0.7.8",
   "description": "The Parity Bond API",
   "main": "src/index.js",
   "jsnext:main": "src/index.js",
@@ -27,19 +27,19 @@
   },
   "homepage": "https://github.com/paritytech/oo7-parity#readme",
   "dependencies": {
-    "@parity/api": "^2",
-    "bignumber.js": "^4.0.0",
+    "@parity/api": "^4",
+    "bignumber.js": "^8.0.2",
     "oo7": "^0.5.9"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^5.7.0",
-    "eslint-config-semistandard": "^12.0.1",
+    "eslint-config-semistandard": "^13.0.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "mocha": "^3.2.0"
   }
 }
